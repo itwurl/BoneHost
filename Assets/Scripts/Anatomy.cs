@@ -82,7 +82,7 @@ public class Anatomy : MonoBehaviour
         DefineSideAgeSexFromDatasetName(dataset);
         
         // ethnic group cannot be guessed by dataset name (yet)
-        EthnicGroupSelector.value = 0;
+        EthnicGroupSelector.value = 1;
 
         // load mesh
         BoneMesh.GetComponent<MeshFilter>().mesh = Resources.Load(dataset, typeof(Mesh)) as Mesh;
@@ -97,7 +97,7 @@ public class Anatomy : MonoBehaviour
         br.Pivot.z = BoneMesh.GetComponent<MeshFilter>().mesh.bounds.center.z;
 
         // center view
-        view = FindObjectOfType(typeof(ViewController)) as ViewController;
+        view = FindFirstObjectByType(typeof(ViewController)) as ViewController;
         view.CenterView(new Vector3(0, 0, 0), BoneMesh.GetComponent<MeshFilter>().mesh.bounds);
 
         // load landmarks after mesh 

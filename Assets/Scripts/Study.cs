@@ -47,8 +47,8 @@ public class Study : MonoBehaviour
         StudySelector = GameObject.Find("StudySelector").GetComponent<Dropdown>();
         StudySelector.onValueChanged.AddListener(delegate { StartStudy(); });
 
-        // define ConfigSelector instance by calling FindObjectOfType
-        ConfigSelector = FindObjectOfType<ConfigLoader>();
+        // define ConfigSelector instance by calling FindAnyObjectByType 
+        ConfigSelector = FindAnyObjectByType<ConfigLoader>();
 
     }
 
@@ -93,7 +93,13 @@ public class Study : MonoBehaviour
         // get the value for bonedoc_url
         string bonedoc_url = ConfigSelector.GetConfigValue("bonedoc_url");
 
-        // connect to the service behind then bonedoc_url value
+        if (!string.IsNullOrEmpty(bonedoc_url) && !bonedoc_url.StartsWith("http://") && !bonedoc_url.StartsWith("https://"))
+        {
+            bonedoc_url = "http://" + bonedoc_url;
+            Debug.LogWarning("bonedoc_url ohne Protokoll gefunden. Ergänzt: " + bonedoc_url);
+        }
+
+        // connect to the service behind the bonedoc_url value
         UnityWebRequest request = UnityWebRequest.Get(bonedoc_url);
 
         // define user header with info server needs for analysis
@@ -106,19 +112,17 @@ public class Study : MonoBehaviour
 
         // send request
         yield return request.SendWebRequest();
-
+    
         // process response
         if (request.result == UnityWebRequest.Result.ConnectionError)
         {
-            // Error 
-            Debug.Log(request.error);
+            // Error
             txt.text = request.error;
+            Debug.Log("Error: " + txt.text);
+            
         }
         else
         {
-            // Success
-            Debug.Log("Message:");
-            Debug.Log(request.downloadHandler.text);
             txt.text = request.downloadHandler.text;
 
             // Debug: switch ethnic group (just for fun)
@@ -140,8 +144,6 @@ public class Study : MonoBehaviour
                 EthnicGroupSelector.value = 1;
             else if (caucasianp >= 50)
                 EthnicGroupSelector.value = 2;
-
-            Debug.Log("End of Message.");
         }
 
         // explicit garbage collection (best practice do use it manually)

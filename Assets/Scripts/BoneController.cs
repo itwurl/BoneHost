@@ -45,7 +45,7 @@ public class BoneController : MonoBehaviour
         Popup.GetComponent<RectTransform>().position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
         // access to view
-        view = FindObjectOfType(typeof(ViewController)) as ViewController;
+        view = FindFirstObjectByType(typeof(ViewController)) as ViewController;
 
         // add landmark
         AddLandmarkButton = GameObject.Find("AddLandmark").GetComponent<Button>();

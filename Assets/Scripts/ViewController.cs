@@ -73,7 +73,7 @@ public class ViewController : MonoBehaviour
         this.transform.position = new Vector3(0, 0, - (FieldOfView * 1.5F));
 
         // instance of BoneRotation
-        br = FindObjectOfType(typeof(BoneController)) as BoneController;
+        br = FindFirstObjectByType(typeof(BoneController)) as BoneController;
 
         // reset transformation for mesh (rotation and translation) 
         br.transform.rotation = Quaternion.identity;
@@ -89,7 +89,7 @@ public class ViewController : MonoBehaviour
         this.transform.position = new Vector3(0, 0, - (FieldOfView * 1.5F));
 
         // instance of BoneRotation
-        br = FindObjectOfType(typeof(BoneController)) as BoneController;
+        br = FindFirstObjectByType(typeof(BoneController)) as BoneController;
 
         // reset transformation for mesh (rotation and translation) 
         br.transform.rotation = Quaternion.identity;

@@ -19,6 +19,9 @@ public class LandmarkHover : MonoBehaviour
     // Store the original text for reset purposes
     private string originalText;
 
+    // Store the original color of the landmark
+    private Color originalColor;
+
     // Init elements to be used
     private void Start()
     {
@@ -33,9 +36,8 @@ public class LandmarkHover : MonoBehaviour
     {
         if (originalText.Contains(targetString))
         {
-            // Replace the target string with a highlighted version
+            // Replace the target string with a highlighted version (red)
             string highlightedText = originalText.Replace(targetString, $"<color=red>{targetString}</color>");
-
             // Only update the text if it has changed (to avoid unnecessary mesh rebuilds)
             if (landmarksText.text != highlightedText)
             {
@@ -63,8 +65,13 @@ public class LandmarkHover : MonoBehaviour
             landmark = GameObject.Find("/Bone/" + hit.collider.name);
             if (landmark != null)
             {
-                // Scale the landmark for visibility
-                landmark.transform.localScale = new Vector3(15, 15, 15);
+                // Change the landmark's color to red (hovered)
+                Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
+                if (landmarkRenderer != null)
+                {
+                    originalColor = landmarkRenderer.material.color; // Save the original color
+                    landmarkRenderer.material.color = Color.red; // Change the color to red
+                }
 
                 // Cut the collider name to match the target string format
                 string targetString = hit.collider.name.Substring(6);
@@ -77,16 +84,31 @@ public class LandmarkHover : MonoBehaviour
         {
             // Reset highlighted text if the mouse is not over any landmark
             ResetHighlightedText();
+
+            // If a landmark was previously hovered, reset its color to green
+            if (landmark != null)
+            {
+                Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
+                if (landmarkRenderer != null)
+                {
+                    landmarkRenderer.material.color = Color.green; // Reset color to green (not hovered)
+                }
+            }
         }
     }
 
-    // Reset the landmark size when the mouse exits
+    // Reset the landmark color when the mouse exits
     private void OnMouseExit()
     {
         if (landmark)
         {
-            // Reset the scale of the landmark
-            landmark.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+            // Reset the color of the landmark to green (not hovered)
+            Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
+            if (landmarkRenderer != null)
+            {
+                landmarkRenderer.material.color = Color.green;
+            }
+
             ResetHighlightedText(); // Reset text highlighting when mouse exits
         }
     }
