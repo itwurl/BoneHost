@@ -127,23 +127,34 @@ public class Study : MonoBehaviour
 
             // Debug: switch ethnic group (just for fun)
             string temp = txt.text.ToString();
+
+            // Überprüfen, ob "asian" im Text vorhanden ist
             int asianpos = temp.IndexOf("asian");
-            int pos2 = temp.IndexOf("%", asianpos) - 7;
-            int l = pos2 - asianpos;
-            int asianp = 0;
-            Int32.TryParse(temp.Substring(asianpos + 7, l), out asianp);
+            if (asianpos >= 0) // Sicherstellen, dass "asian" gefunden wurde
+            {
+                int pos2 = temp.IndexOf("%", asianpos);
+                if (pos2 >= 0) // Sicherstellen, dass "%" gefunden wurde
+                {
+                    pos2 -= 7;  // Berechne den Wert nach dem "asian"-Text
+                    int l = pos2 - asianpos;  // Länge des Substrings
+                    int asianp = 0;
+                    Int32.TryParse(temp.Substring(asianpos + 7, l), out asianp);
+                }
+            }
 
             int caucasianpos = temp.IndexOf("caucasian");
-            int pos3 = temp.IndexOf("%", caucasianpos) - 11;
-            int l2 = pos3 - caucasianpos;
+            if (caucasianpos >= 0) // Sicherstellen, dass "caucasian" gefunden wurde
+            {
+                int pos3 = temp.IndexOf("%", caucasianpos);
+                if (pos3 >= 0) // Sicherstellen, dass "%" gefunden wurde
+                {
+                    pos3 -= 11;  // Berechne den Wert nach dem "caucasian"-Text
+                    int l2 = pos3 - caucasianpos;  // Länge des Substrings
+                    int caucasianp = 0;
+                    Int32.TryParse(temp.Substring(caucasianpos + 11, l2), out caucasianp);
+                }
+            }
 
-            int caucasianp = 0;
-            Int32.TryParse(temp.Substring(caucasianpos + 11, l2), out caucasianp);
-
-            if (asianp >= 50)
-                EthnicGroupSelector.value = 1;
-            else if (caucasianp >= 50)
-                EthnicGroupSelector.value = 2;
         }
 
         // explicit garbage collection (best practice do use it manually)
