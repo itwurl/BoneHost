@@ -15,4 +15,3 @@ docker run -d -p 80:80 bonehost
 
 To test bonehost open localhost:80 with a web browser.
 
-<img src="https://github.com/alexander-wurl/BoneHost/blob/main/bonehost.png" alt="BoneHost" width="320" height="200">
