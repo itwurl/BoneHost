@@ -105,8 +105,6 @@ public class Study : MonoBehaviour
         else
         {
             txt.text = request.downloadHandler.text;
-
-            // Optional: Debug-Informationen zu bestimmten Wörtern im Text
             ParseEthnicGroups(txt.text);
         }
 
