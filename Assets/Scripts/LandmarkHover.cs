@@ -36,7 +36,7 @@ public class LandmarkHover : MonoBehaviour
     {
         if (originalText.Contains(targetString))
         {
-            // Replace the target string with a highlighted version (red)
+            // Replace the target string with a highlighted version
             string highlightedText = originalText.Replace(targetString, $"<color=red>{targetString}</color>");
             // Only update the text if it has changed (to avoid unnecessary mesh rebuilds)
             if (landmarksText.text != highlightedText)
@@ -65,7 +65,7 @@ public class LandmarkHover : MonoBehaviour
             landmark = GameObject.Find("/Bone/" + hit.collider.name);
             if (landmark != null)
             {
-                // Change the landmark's color to red (hovered)
+                // Change the landmark's color to
                 Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
                 if (landmarkRenderer != null)
                 {
@@ -85,13 +85,13 @@ public class LandmarkHover : MonoBehaviour
             // Reset highlighted text if the mouse is not over any landmark
             ResetHighlightedText();
 
-            // If a landmark was previously hovered, reset its color to green
+            // If a landmark was previously hovered, reset its color
             if (landmark != null)
             {
                 Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
                 if (landmarkRenderer != null)
                 {
-                    landmarkRenderer.material.color = Color.green; // Reset color to green (not hovered)
+                    landmarkRenderer.material.color = Color.white; // Reset color (not hovered)
                 }
             }
         }
@@ -102,11 +102,11 @@ public class LandmarkHover : MonoBehaviour
     {
         if (landmark)
         {
-            // Reset the color of the landmark to green (not hovered)
+            // Reset the color of the landmark (not hovered)
             Renderer landmarkRenderer = landmark.GetComponent<Renderer>();
             if (landmarkRenderer != null)
             {
-                landmarkRenderer.material.color = Color.green;
+                landmarkRenderer.material.color = Color.white;
             }
 
             ResetHighlightedText(); // Reset text highlighting when mouse exits
