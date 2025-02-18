@@ -21,11 +21,12 @@ public class Study : MonoBehaviour
         EthnicGroupSelector = GameObject.Find("EthnicGroupSelector").GetComponent<Dropdown>();
         StudySelector = GameObject.Find("StudySelector").GetComponent<Dropdown>();
 
+        // ConfigLoader-Instanz finden
+        ConfigSelector = FindAnyObjectByType<ConfigLoader>();
+        
         // Event Listener hinzufügen
         StudySelector.onValueChanged.AddListener(delegate { StartStudy(); });
 
-        // ConfigLoader-Instanz finden
-        ConfigSelector = FindAnyObjectByType<ConfigLoader>();
     }
 
     // Methode, die den Studienstart initiiert
@@ -38,16 +39,26 @@ public class Study : MonoBehaviour
             return;
         }
 
-        // Überprüfen, ob eine Studie ausgewählt wurde
-        if (StudySelector.value <= 0)
-        {
-            return;
-        }
+        txt.text = StudySelector.value.ToString();
 
-        // UI-Aktualisierung und Start des Requests
-        txt.text = "Please wait ...";
-        StartCoroutine(BoneDocRequest());
-        StudySelector.value = 0; // Zurücksetzen der Auswahl
+        switch (StudySelector.value){
+
+            case 1: // Thesis
+                // UI-Aktualisierung und Start des Requests
+                txt.text = "Please wait ...";
+                StartCoroutine(BoneDocRequest());
+                break;
+            case 2: // Fitting
+                // UI-Aktualisierung und Start des Requests
+                txt.text = "Please wait ...";
+                //StudySelector.value = 0;
+                break;
+            default:
+                StudySelector.value = 0; // Zurücksetzen der Auswahl
+                break;
+                //return;
+        }
+        
     }
 
     // Die Anfrage an das Backend
