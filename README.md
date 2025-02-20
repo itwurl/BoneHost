@@ -7,7 +7,7 @@ BoneHost is a web application for 3d shape analysis of human bones.
 Just clone repo, build bonehost image and run bonehost container.
 
 ```
-git clone https://github.com/alexander-wurl/boneHost-development
+git clone https://github.com/itwurl/BoneHost.git
 cd bonehost
 docker build -t bonehost .
 docker run -d -p 80:80 bonehost
