@@ -46,6 +46,7 @@ public class ConfigLoader : MonoBehaviour {
             }
         }
     }
+
     private void ParseConfigLines(string[] lines) {
         foreach (string line in lines) {
             if (!string.IsNullOrWhiteSpace(line) && line.Contains("=")) {
@@ -59,6 +60,7 @@ public class ConfigLoader : MonoBehaviour {
             }
         }
     }
+
     public string GetConfigValue(string key)
     {
         if (configValues.TryGetValue(key, out string value))

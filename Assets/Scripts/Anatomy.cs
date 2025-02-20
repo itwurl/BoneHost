@@ -44,7 +44,7 @@ public class Anatomy : MonoBehaviour
         GenderSelector = GameObject.Find("GenderSelector").GetComponent<Dropdown>();
         EthnicGroupSelector = GameObject.Find("EthnicGroupSelector").GetComponent<Dropdown>();
 
-        // landmar text
+        // landmark text
         Landmarks = GameObject.Find("/Canvas/LandmarksPanel/Landmarks").GetComponent<Text>();
 
         // study text
@@ -82,7 +82,7 @@ public class Anatomy : MonoBehaviour
         DefineSideAgeSexFromDatasetName(dataset);
         
         // ethnic group cannot be guessed by dataset name (yet)
-        EthnicGroupSelector.value = 1;
+        //EthnicGroupSelector.value = 1;
 
         // load mesh
         BoneMesh.GetComponent<MeshFilter>().mesh = Resources.Load(dataset, typeof(Mesh)) as Mesh;
@@ -189,7 +189,6 @@ public class Anatomy : MonoBehaviour
             // make transformation dependent from parent (=bone) 
             LandmarkSet[i].transform.parent = BoneMesh.transform;
         }
-
 
     }
 

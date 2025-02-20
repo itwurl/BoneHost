@@ -26,14 +26,6 @@ public class ViewController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //translation = Input.GetAxis("Vertical") * TranslationSpeed;
-        //straffe = Input.GetAxis("Horizontal") * TranslationSpeed;
-
-        //translation *= Time.deltaTime;
-        //straffe *= Time.deltaTime;
-
-        //this.transform.Translate(straffe, translation, 0, Space.Self);
-
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             // forward
@@ -47,8 +39,8 @@ public class ViewController : MonoBehaviour
         }
         else if (UnityEngine.Input.GetMouseButton(2))
         {
-            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 10);
-            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 10);
+            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 100);
+            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 100);
 
             translation *= Time.deltaTime;
             straffe *= Time.deltaTime;
@@ -69,7 +61,6 @@ public class ViewController : MonoBehaviour
         Camera.main.farClipPlane = FieldOfView * 3F;
 
         // reset position for Capsule/Camera
-        //this.transform.position = new Vector3(bounds.center.x, bounds.center.y, bounds.center.z - (FieldOfView * 1.5F));
         this.transform.position = new Vector3(0, 0, - (FieldOfView * 1.5F));
 
         // instance of BoneRotation

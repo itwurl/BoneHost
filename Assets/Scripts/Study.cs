@@ -43,6 +43,9 @@ public class Study : MonoBehaviour
 
         switch (StudySelector.value){
 
+            case 0:
+                txt.text = "Select study";
+                break;
             case 1: // Thesis
                 // UI-Aktualisierung und Start des Requests
                 txt.text = "Please wait ...";
@@ -50,13 +53,10 @@ public class Study : MonoBehaviour
                 break;
             case 2: // Fitting
                 // UI-Aktualisierung und Start des Requests
-                txt.text = "Please wait ...";
-                //StudySelector.value = 0;
+                txt.text = "Not available yet";
                 break;
             default:
-                StudySelector.value = 0; // Zurücksetzen der Auswahl
                 break;
-                //return;
         }
         
     }
