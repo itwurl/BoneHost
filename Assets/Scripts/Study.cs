@@ -23,7 +23,7 @@ public class Study : MonoBehaviour
 
         // ConfigLoader-Instanz finden
         ConfigSelector = FindAnyObjectByType<ConfigLoader>();
-        
+
         // Event Listener hinzufügen
         StudySelector.onValueChanged.AddListener(delegate { StartStudy(); });
 
@@ -58,7 +58,7 @@ public class Study : MonoBehaviour
             default:
                 break;
         }
-        
+
     }
 
     // Die Anfrage an das Backend
