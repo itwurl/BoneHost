@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ViewController : MonoBehaviour
 {
     public float FieldOfView;
-    public float TranslationSpeed = 100.0F;
+    public float TranslationSpeed = 10.0F;
     float translation = 0.0F;
     float straffe = 0.0F;
 
