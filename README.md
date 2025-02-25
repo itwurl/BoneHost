@@ -4,7 +4,7 @@ BoneHost is a web application for 3d shape analysis of human bones.
 
 ## Quickstart
 
-Clone the repo, build the Bonehost image, and run the container.
+Clone the repo, build the Bonehost image and run the container.
 
 ```
 git clone https://github.com/itwurl/BoneHost.git
