@@ -39,8 +39,8 @@ public class ViewController : MonoBehaviour
         }
         else if (UnityEngine.Input.GetMouseButton(2))
         {
-            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 100);
-            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 100);
+            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 10);
+            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 10);
 
             translation *= Time.deltaTime;
             straffe *= Time.deltaTime;
