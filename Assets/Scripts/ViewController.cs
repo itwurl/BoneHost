@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ViewController : MonoBehaviour
 {
     public float FieldOfView;
-    public float TranslationSpeed = 10.0F;
+    public float TranslationSpeed = 100.0F;
     float translation = 0.0F;
     float straffe = 0.0F;
 
@@ -39,8 +39,8 @@ public class ViewController : MonoBehaviour
         }
         else if (UnityEngine.Input.GetMouseButton(2))
         {
-            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 10);
-            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 10);
+            translation -= Input.GetAxis("Mouse Y") * (TranslationSpeed * 100);
+            straffe -= Input.GetAxis("Mouse X") * (TranslationSpeed * 100);
 
             translation *= Time.deltaTime;
             straffe *= Time.deltaTime;
