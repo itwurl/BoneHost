@@ -15,3 +15,6 @@ docker run -d -p 80:80 bonehost
 
 To test bonehost open localhost:80 with a web browser.
 
+## Archiv/Read-Only
+
+Repo is set to read only and therefore archived.
