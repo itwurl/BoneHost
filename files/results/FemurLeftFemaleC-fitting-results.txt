@@ -1,0 +1,9 @@
+Fitting Results for FemurLeftFemaleC
+========================================
+Asian Model (A) Results:
+- Average Distance: 3.756mm
+- Iterations: 0
+
+Caucasian Model (C) Results:
+- Average Distance: 2.42mm
+- Iterations: 0
