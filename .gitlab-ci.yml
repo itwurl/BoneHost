@@ -1,0 +1,25 @@
+stages:
+  - build
+  - deploy
+  - test
+
+build_image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t registry.gitlab.com/itwurl/bonehost:1.0 .
+    - docker push registry.gitlab.com/itwurl/bonehost:1.0
+
+deploy_to_prod:
+  stage: deploy
+  script:
+    - echo "Deploying image to production..."
+    # Hier lag dein Deployment-Befehl/Script für ELON
+
+check_availability:
+  stage: test
+  script:
+    - echo "Checking service availability..."
+    - curl -sI https://bonehost.net | grep "200 OK"
